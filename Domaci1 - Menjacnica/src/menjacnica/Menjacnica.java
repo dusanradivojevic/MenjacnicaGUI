@@ -6,9 +6,6 @@ import menjacnica.Valute.Valuta;
 
 public class Menjacnica {
 	
-	private LinkedList<Valuta> valute;
+	private LinkedList<Valuta> valute = new LinkedList<>();
 	
-	public Menjacnica() {
-		valute = new LinkedList<>();
-	}
 }
