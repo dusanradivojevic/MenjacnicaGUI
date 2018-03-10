@@ -12,20 +12,30 @@ public class Menjacnica implements MenjacnicaInterfejs{
 
 	@Override
 	public boolean dodajKurs(Valuta val) {
-		// TODO Auto-generated method stub
-		return false;
+		valute.add(val);
+		return true;
 	}
 
 	@Override
 	public boolean obrisiKurs(Valuta val) {
-		// TODO Auto-generated method stub
-		return false;
+		if (!valute.contains(val))
+			throw new RuntimeException("Valuta ne postoji u listi!");
+		
+		int i = valute.indexOf(val);
+		valute.remove(i);
+		return true;
 	}
 
 	@Override
 	public Valuta vratiKurs(String nazivValute, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-		return null;
+		Valuta val = new Valuta(nazivValute, datum);
+			
+		if (valute.contains(val)) {
+			int i = valute.indexOf(val);
+			return valute.get(i);
+		}
+		
+		throw new RuntimeException("Valuta ne postoji u listi!");
 	}
 	
 }

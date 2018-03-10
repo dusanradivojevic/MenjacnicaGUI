@@ -7,7 +7,29 @@ public class Valuta {
 	private String naziv, skracenica;
 	private GregorianCalendar datum;
 	private double prodajni, kupovni, srednji; // kurs
-		
+	
+	public Valuta() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Valuta(String naziv, String skracenica, GregorianCalendar datum, double prodajni, double kupovni, double srednji) {
+		this.naziv = naziv;
+		this.skracenica = skracenica;
+		this.datum = datum;
+		this.prodajni = prodajni;
+		this.kupovni = kupovni;
+		this.srednji = srednji;
+	}
+	
+	public Valuta(String naziv, GregorianCalendar datum) {
+		this.naziv = naziv;
+		this.datum = datum;
+		this.skracenica = null;
+		this.prodajni = 0.0;
+		this.kupovni = 0.0;
+		this.srednji = 0.0;
+	}
+	
 	public GregorianCalendar getDatum() {
 		return datum;
 	}
@@ -94,22 +116,19 @@ public class Valuta {
 				return false;
 		} else if (!datum.equals(other.datum))
 			return false;
-		if (Double.doubleToLongBits(kupovni) != Double.doubleToLongBits(other.kupovni))
-			return false;
+		
 		if (naziv == null) {
 			if (other.naziv != null)
 				return false;
 		} else if (!naziv.equals(other.naziv))
 			return false;
-		if (Double.doubleToLongBits(prodajni) != Double.doubleToLongBits(other.prodajni))
-			return false;
+		
 		if (skracenica == null) {
 			if (other.skracenica != null)
 				return false;
 		} else if (!skracenica.equals(other.skracenica))
 			return false;
-		if (Double.doubleToLongBits(srednji) != Double.doubleToLongBits(other.srednji))
-			return false;
+		
 		return true;
 	}
 	
