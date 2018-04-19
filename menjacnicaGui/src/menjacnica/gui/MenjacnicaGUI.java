@@ -76,7 +76,7 @@ public class MenjacnicaGUI {
 		});
 		frmMenjacnica.setTitle("Menjacnica");
 		frmMenjacnica.setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/icons/Th11-Paper-money.jpeg")));
-		frmMenjacnica.setBounds(100, 100, 450, 300);
+		frmMenjacnica.setBounds(100, 100, 461, 300);
 		frmMenjacnica.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmMenjacnica.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -132,6 +132,12 @@ public class MenjacnicaGUI {
 		popupMenu.add(mntmIzbrisiKurs);
 		
 		JMenuItem mntmIzvrsiIzmenu = new JMenuItem("Izvrsi izmenu");
+		mntmIzvrsiIzmenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvrsiZamenuGUI iz = new IzvrsiZamenuGUI(gp);
+				iz.setVisible(true);
+			}
+		});
 		popupMenu.add(mntmIzvrsiIzmenu);
 		
 		JPanel panel_1 = new JPanel();
@@ -150,7 +156,7 @@ public class MenjacnicaGUI {
 		scrollPane_1.setViewportView(textArea);
 		
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(100, 1));
+		panel.setPreferredSize(new Dimension(105, 1));
 		frmMenjacnica.getContentPane().add(panel, BorderLayout.EAST);
 		
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
@@ -174,6 +180,12 @@ public class MenjacnicaGUI {
 		panel.add(btnIzbrisiKurs);
 		
 		JButton btnIzvsiIzmenu = new JButton("Izvrsi izmenu");
+		btnIzvsiIzmenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvrsiZamenuGUI iz = new IzvrsiZamenuGUI(gp);
+				iz.setVisible(true);
+			}
+		});
 		panel.add(btnIzvsiIzmenu);
 		
 		JMenuBar menuBar = new JMenuBar();
