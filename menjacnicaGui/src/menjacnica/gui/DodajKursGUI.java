@@ -121,7 +121,5 @@ public class DodajKursGUI extends JFrame {
 		});
 		btnOdustani.setBounds(130, 146, 89, 23);
 		contentPane.add(btnOdustani);
-		
-		this.gp=gp;
 	}
 }
