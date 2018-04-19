@@ -1,6 +1,7 @@
 package menjacnica.gui;
 
 import java.awt.EventQueue;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
 import java.awt.Toolkit;
@@ -39,9 +40,10 @@ import java.awt.event.WindowEvent;
 
 public class MenjacnicaGUI {
 
+	private JTextArea textArea;
 	private JFrame frmMenjacnica;
 	private JTable table;
-	private MenjacnicaGUI gp; /// pomprozor.setEnable true
+	private MenjacnicaGUI gp = this;
 
 	/**
 	 * Launch the application.
@@ -111,6 +113,21 @@ public class MenjacnicaGUI {
 		JPopupMenu popupMenu = new JPopupMenu();
 		addPopup(table, popupMenu);
 		
+		JMenuItem mntmDodajKurs = new JMenuItem("Dodaj kurs");
+		mntmDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DodajKursGUI dodajKurs = new DodajKursGUI(gp);
+				dodajKurs.setVisible(true);
+			}
+		});
+		popupMenu.add(mntmDodajKurs);
+		
+		JMenuItem mntmIzbrisiKurs = new JMenuItem("Izbrisi kurs");
+		popupMenu.add(mntmIzbrisiKurs);
+		
+		JMenuItem mntmIzvrsiIzmenu = new JMenuItem("Izvrsi izmenu");
+		popupMenu.add(mntmIzvrsiIzmenu);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "STATUS", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setPreferredSize(new Dimension(10, 50));
@@ -122,6 +139,7 @@ public class MenjacnicaGUI {
 		panel_1.add(scrollPane_1, BorderLayout.CENTER);
 		
 		JTextArea textArea = new JTextArea();
+		this.textArea = textArea;
 		textArea.setPreferredSize(new Dimension(4, 35));
 		scrollPane_1.setViewportView(textArea);
 		
@@ -130,6 +148,12 @@ public class MenjacnicaGUI {
 		frmMenjacnica.getContentPane().add(panel, BorderLayout.EAST);
 		
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
+		btnDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dodajKurs=new DodajKursGUI(gp);
+				dodajKurs.setVisible(true);
+			}
+		});
 		btnDodajKurs.setPreferredSize(new Dimension(95, 23));
 		panel.add(btnDodajKurs);
 		
@@ -223,6 +247,10 @@ public class MenjacnicaGUI {
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
+	}
+	
+	public void ispisiStatus(String s) {
+		textArea.append(s);
 	}
 	
 	private static void addPopup(Component component, final JPopupMenu popup) {
